@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.char {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+
+  .image-wrapper {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 500px;
+    }
+  }
+
+  .mat-card-content {
+    padding: 20px;
+    margin: 0;
+    background: #FFF9F9;
+    box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.25);
+
+    label {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 28px;
+      color: #716868;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .mat-radio-group {
+      display: flex;
+      flex-direction: column;
+
+      .radio-button {
+        text-transform: capitalize;
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 28px;
+        color: #716868;
+        margin: 15px 0;
+      }
+    }
+  }
+
+  .mat-card-actions {
+    background: #FFF9F9;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 28px;
+      color: #FFFFFF;
+      background: #93C2ED;
+      border: none;
+      padding: 5px 20px;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+  }
+}
+

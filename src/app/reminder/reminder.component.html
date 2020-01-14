@@ -1,0 +1,10 @@
+<mat-card class="char">
+  <mat-card-content>
+    <p>The {{numbers[currentOption]}}:</p>
+    <p><span class="bold">{{currentOption}}</span></p>
+    <p>{{comments[currentOption]}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="hideReminder()">Got it</button>
+  </mat-card-actions>
+</mat-card>

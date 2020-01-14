@@ -1,0 +1,26 @@
+<mat-card class="char">
+  <app-reminder *ngIf="isReminder"
+                [currentOption]="this.currentOption"
+                (onIsReminderChange)="this.toggleReminder()"></app-reminder>
+  <app-comment *ngIf="isComment"
+               [comment]="comment"
+               (onIsCommentChange)="this.toggleComment()"></app-comment>
+  <mat-card-content class="image-wrapper">
+    <img mat-card-image src="assets/images/{{currentOption}}/{{currentOptions.race}}{{currentOptions.class}}.png" alt="Your hero">
+  </mat-card-content>
+  <mat-card-content>
+    <label id="radio-group-label">Choose <span class="bold">{{currentOption}}</span> from the options:</label>
+    <mat-radio-group
+      aria-labelledby="radio-group-label"
+      class="radio-group"
+      [(ngModel)]="currentOptions[this.currentOption]" (change)="increaseRadioChangedCount()">
+      <mat-radio-button class="radio-button" *ngFor="let option of options[currentOption]" [value]="option">
+        {{option}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </mat-card-content>
+  <mat-card-actions>
+    <button [class.hidden]="currentOption === 'race'" mat-button (click)="goToPrevOption()" class="backButton">Back</button>
+    <button mat-button (click)="goToNextOption()" class="nextButton">Next</button>
+  </mat-card-actions>
+</mat-card>

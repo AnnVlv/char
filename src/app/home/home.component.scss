@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Vollkorn|Waiting+for+the+Sunrise&display=swap');
+
+.home {
+  max-width: 400px;
+
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+
+    mat-card-title {
+      font-family: 'Waiting for the Sunrise', cursive;
+      text-transform: uppercase;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 80px;
+      line-height: 132px;
+      color: #93C2ED;
+    }
+
+    mat-card-subtitle {
+      font-family: 'Vollkorn', serif;
+      font-style: italic;
+      font-weight: normal;
+      font-size: 28px;
+      line-height: 39px;
+      color: #93C2ED;
+      text-align: right;
+    }
+  }
+
+  mat-card-content {
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 28px;
+      color: #716868;
+    }
+
+    mat-divider {
+      border: 1px solid #93C2ED;
+    }
+
+    .rotate {
+      transform: rotate(-4deg);
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+
+    button {
+      padding: 15px 40px;
+      border: none;
+      background: #93C2ED;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      line-height: 42px;
+      color: #FFFFFF;
+    }
+  }
+}

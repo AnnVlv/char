@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {NUMBERS} from '../shared/numbers';
 
 @Component({
   selector: 'app-reminder',
@@ -7,24 +8,15 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class ReminderComponent implements OnInit {
   private numbers: object;
-  private comments: object;
-  @Input() currentOption: string;
-  @Output() onIsReminderChange = new EventEmitter();
-
-  constructor() { }
+  @Output() onHideReminder = new EventEmitter<any>();
+  @Input() reminder: string;
+  @Input() option: string;
 
   public ngOnInit(): void {
-    this.numbers = {
-      race: 'first',
-      class: 'second'
-    };
-    this.comments = {
-      race: 'Everyone is crazy about it now...',
-      class: 'Second but not least'
-    };
+    this.numbers = NUMBERS;
   }
 
   private hideReminder(): void {
-    this.onIsReminderChange.emit();
+    this.onHideReminder.emit();
   }
 }

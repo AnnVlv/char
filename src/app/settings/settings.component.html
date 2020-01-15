@@ -1,0 +1,6 @@
+<mat-card class="settings">
+  <app-reminder *ngIf="isReminder"
+                [reminder]="currentReminder"
+                [option]="currentOption"
+                (onHideReminder)="hideReminder()"></app-reminder>
+</mat-card>

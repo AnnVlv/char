@@ -1,10 +1,14 @@
 <mat-card class="char">
-  <mat-card-content>
-    <p>The {{numbers[currentOption]}}:</p>
-    <p><span class="bold">{{currentOption}}</span></p>
-    <p>{{comments[currentOption]}}</p>
+  <mat-card-content *ngIf="option !== 'settings'; else settings">
+    <p>The {{numbers[option]}}:</p>
+    <p><span class="bold">{{option}}</span></p>
+    <p>{{reminder}}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="hideReminder()">Got it</button>
   </mat-card-actions>
+
+  <ng-template #settings>
+    <p>{{reminder}}</p>
+  </ng-template>
 </mat-card>

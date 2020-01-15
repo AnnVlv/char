@@ -1,6 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {raceComments} from '../shared/raceComments';
-import {classComments} from '../shared/classComments';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-comment',
@@ -9,11 +7,11 @@ import {classComments} from '../shared/classComments';
 })
 export class CommentComponent {
   @Input() comment: string;
-  @Output() onIsCommentChange = new EventEmitter();
+  @Output() onHideComment = new EventEmitter<any>();
 
   constructor() { }
 
   private hideComment(): void {
-    this.onIsCommentChange.emit();
+    this.onHideComment.emit();
   }
 }

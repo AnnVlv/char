@@ -11,6 +11,7 @@ import { CharComponent } from './char/char.component';
 import {FormsModule} from '@angular/forms';
 import { ReminderComponent } from './reminder/reminder.component';
 import { CommentComponent } from './comment/comment.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CommentComponent } from './comment/comment.component';
     HomeComponent,
     CharComponent,
     ReminderComponent,
-    CommentComponent
+    CommentComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,6 @@ export class HomeComponent {
   constructor(private router: Router) { }
 
   public goToChar(): void {
-    this.router.navigate(['/char', 'race']);
+    this.router.navigate(['/char']);
   }
 }

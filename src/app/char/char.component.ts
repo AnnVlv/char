@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MatRadioChange} from '@angular/material';
+import {CharService} from '../shared/char.service';
+import {REMINDERS} from '../shared/reminders';
+import {COMMENTS} from '../shared/comments';
+import {OPTIONS_NAMES} from '../shared/optionsNames';
+import {OPTIONS} from '../shared/options';
 
 @Component({
   selector: 'app-char',
@@ -8,47 +14,98 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class CharComponent implements OnInit {
   public optionsNames: string[];
-  public currentOption: string;
   public options: object;
+
+  public currentOption: string;
   public currentOptions: object;
+
   public isReminder: boolean;
   public isComment: boolean;
-  public comment: string;
-  public radioChanged: number;
+
+  public reminders: object;
+  public comments: object;
+
+  public currentReminder: string;
+  public currentComment: string;
+
+  public radioChangesCounts: object;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private charService: CharService,
+    private router: Router
+  ) {
+  }
 
   public ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.currentOption = params.option;
-    });
+    this.optionsNames = OPTIONS_NAMES;
+    this.options = OPTIONS;
 
-    this.optionsNames = ['race', 'class'];
-    this.options = {
-      race: ['human', 'elf', 'dwarf'],
-      class: ['warrior', 'dude with bow', 'mage'],
+    this.currentOption = this.charService.currentOption = this.optionsNames[0];
+    this.currentOptions = this.charService.currentOptions = {
+      [this.optionsNames[0]]: this.options[this.charService.currentOption][0]
     };
-    this.currentOptions = {
-      race: 'human',
-      class: '',
-    };
+
     this.isReminder = true;
     this.isComment = false;
-    this.comment = '';
-    this.radioChanged = 0;
+
+    this.reminders = REMINDERS;
+    this.comments = COMMENTS;
+
+    this.currentReminder = this.reminders[this.currentOption];
+    this.currentComment = '';
+
+    this.radioChangesCounts = {
+      [this.options[this.currentOption][0]]: 1
+    };
+  }
+
+  private onRadioValueChanges(event: MatRadioChange): void {
+    this.currentOptions[this.currentOption] = this.charService.currentOptions[this.currentOption] = event.value;
+    this.isComment = false;
+    if (!this.radioChangesCounts[event.value]) {
+      this.radioChangesCounts[event.value] = 1;
+    } else {
+      this.radioChangesCounts[event.value]++;
+      if (this.radioChangesCounts[event.value] === 2) {
+        let currentOptionsInString = '';
+        for (const key in this.currentOptions) {
+          currentOptionsInString += this.currentOptions[key];
+        }
+        this.currentComment = this.comments[this.currentOption][currentOptionsInString];
+        if (this.currentComment) {
+          this.isReminder = false;
+          this.isComment = true;
+        }
+      }
+    }
   }
 
   private goToNextOption(): void {
+    this.isComment = false;
     const nextOption = this.getNextOption();
-    if (nextOption !== '') {
-      this.currentOption = nextOption;
-      this.currentOptions[this.currentOption] = this.options[this.currentOption][0];
+    if (nextOption === 'settings') {
+      this.currentOption = this.charService.currentOption = nextOption;
+      this.router.navigate(['/settings']);
+    } else {
+      this.currentOption = this.charService.currentOption = nextOption;
+      this.currentOptions[this.currentOption] = this.charService.currentOptions[this.currentOption] = this.options[this.charService.currentOption][0];
+      this.currentReminder = this.reminders[this.currentOption];
+      this.radioChangesCounts[this.currentOptions[this.currentOption]] = 1;
       this.isReminder = true;
-      this.router.navigate(['/char', this.currentOption]);
     }
+  }
+
+  private getNextOption(): string {
+    let isFindedCurrentOption = false;
+    for (const key in this.options) {
+      if (isFindedCurrentOption) {
+        return key;
+      }
+      if (key === this.currentOption) {
+        isFindedCurrentOption = true;
+      }
+    }
+    return 'settings';
   }
 
   private goToPrevOption(): void {
@@ -56,21 +113,8 @@ export class CharComponent implements OnInit {
     if (prevOption !== '') {
       this.currentOptions[this.currentOption] = '';
       this.currentOption = prevOption;
-      this.router.navigate(['/char', this.currentOption]);
+      this.isReminder = false;
     }
-  }
-
-  private getNextOption(): string {
-    let isFinded = false;
-    for (const key in this.options) {
-      if (isFinded) {
-        return key;
-      }
-      if (key === this.currentOption) {
-        isFinded = true;
-      }
-    }
-    return '';
   }
 
   private getPrevOption(): string {
@@ -100,19 +144,11 @@ export class CharComponent implements OnInit {
     return newObject;
   }
 
-  private toggleReminder(): void {
-    this.isReminder = !this.isReminder;
+  private hideReminder(): void {
+    this.isReminder = false;
   }
 
-  private toggleComment(): void {
-    this.isComment = !this.isComment;
-  }
-
-  private increaseRadioChangedCount(): void {
-    this.radioChanged++;
-    if (this.radioChanged === 3) {
-      this.isComment = true;
-    }
+  private hideComment(): void {
+    this.isComment = false;
   }
 }
-

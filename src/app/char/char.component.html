@@ -1,4 +1,4 @@
-<mat-card class="char">
+<mat-card class="char" [class.unicorn-dark-theme]="currentTheme === 'dark'">
   <app-reminder *ngIf="isReminder"
                 [reminder]="currentReminder"
                 [option]="currentOption"

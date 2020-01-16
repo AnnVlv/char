@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatRadioChange} from '@angular/material';
 import {CharService} from '../shared/char.service';
-import {REMINDERS} from '../shared/reminders';
+import {Reminders} from '../shared/reminders';
 import {COMMENTS} from '../shared/comments';
 import {OPTIONS_NAMES} from '../shared/optionsNames';
 import {OPTIONS} from '../shared/options';
+import {SettingsService} from '../shared/settings.service';
 
 @Component({
   selector: 'app-char',
@@ -18,6 +19,7 @@ export class CharComponent implements OnInit {
 
   public currentOption: string;
   public currentOptions: object;
+  public currentTheme: string;
 
   public isReminder: boolean;
   public isComment: boolean;
@@ -32,6 +34,7 @@ export class CharComponent implements OnInit {
 
   constructor(
     private charService: CharService,
+    private settingsService: SettingsService,
     private router: Router
   ) {
   }
@@ -44,11 +47,12 @@ export class CharComponent implements OnInit {
     this.currentOptions = this.charService.currentOptions = {
       [this.optionsNames[0]]: this.options[this.charService.currentOption][0]
     };
+    this.currentTheme = this.settingsService.currentTheme = 'light';
 
     this.isReminder = true;
     this.isComment = false;
 
-    this.reminders = REMINDERS;
+    this.reminders = new Reminders();
     this.comments = COMMENTS;
 
     this.currentReminder = this.reminders[this.currentOption];

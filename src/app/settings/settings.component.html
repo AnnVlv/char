@@ -3,4 +3,28 @@
                 [reminder]="currentReminder"
                 [option]="currentOption"
                 (onHideReminder)="hideReminder()"></app-reminder>
+  <img
+    mat-card-image
+    src="assets/images/{{optionsNames[optionsNames.length - 1]}}/{{currentOptions[optionsNames[0]]}}{{currentOptions[optionsNames[1]]}}.png"
+    alt="Your hero"
+    [ngStyle]="{'background': settingsService.currentBackgroundColor}">
+  <mat-card-content>
+    <label id="radio-group-label">Theme:</label>
+    <mat-radio-group aria-labelledby="radio-group-label" class="radio-group">
+      <mat-radio-button class="radio-button" value="light" (change)="changeTheme($event)" checked="true">
+        Day
+      </mat-radio-button>
+      <mat-radio-button class="radio-button" value="dark" (change)="changeTheme($event)">
+        Night
+      </mat-radio-button>
+    </mat-radio-group>
+    <p>Background:</p>
+    <input [(colorPicker)]="currentColor"
+           [style.background]="currentColor"
+           (colorPickerChange)="changeBackgroundColor($event)"
+           cpPosition="bottom"/>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="saveSettings()">Save</button>
+  </mat-card-actions>
 </mat-card>

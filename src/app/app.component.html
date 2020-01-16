@@ -1,1 +1,3 @@
-<router-outlet></router-outlet>
+<div [class.dark-theme]="this.settingsService.currentTheme === 'dark'">
+  <router-outlet></router-outlet>
+</div>

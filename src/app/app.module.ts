@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {MaterialModule} from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import { ReminderComponent } from './reminder/reminder.component';
 import { CommentComponent } from './comment/comment.component';
 import { SettingsComponent } from './settings/settings.component';
+import { EndComponent } from './end/end.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { SettingsComponent } from './settings/settings.component';
     CharComponent,
     ReminderComponent,
     CommentComponent,
-    SettingsComponent
+    SettingsComponent,
+    EndComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { SettingsComponent } from './settings/settings.component';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

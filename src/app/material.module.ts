@@ -1,19 +1,75 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import {MatCardModule} from '@angular/material/card';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatRadioModule} from '@angular/material/radio';
+import {
+  MatButtonModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatBadgeModule,
+  MatSidenavModule,
+  MatListModule,
+  MatGridListModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatRadioModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatChipsModule,
+  MatTooltipModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatCardModule
+} from '@angular/material';
+
+import {MatColorPickerModule} from 'mat-color-picker';
 
 @NgModule({
   imports: [
+    CommonModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatBadgeModule,
+    MatListModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatChipsModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
     MatCardModule,
-    MatDividerModule,
-    MatRadioModule
+    MatColorPickerModule
   ],
   exports: [
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatBadgeModule,
+    MatListModule,
+    MatGridListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatChipsModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
     MatCardModule,
-    MatDividerModule,
-    MatRadioModule
+    MatColorPickerModule
+  ],
+  providers: [
+    MatDatepickerModule,
   ]
 })
-export class MaterialModule {}
+
+export class MaterialModule { }

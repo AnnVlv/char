@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Vollkorn|Waiting+for+the+Sunrise&display=swap');
+@import '../../theme';
 
 .home {
-  max-width: 400px;
-  background: #FFFFFF;
-
   mat-card-header {
     display: flex;
     justify-content: center;
@@ -15,7 +13,16 @@
       font-weight: 300;
       font-size: 80px;
       line-height: 132px;
-      color: #93C2ED;
+      color: mat-color($primary, 200);
+
+      @media(max-width: 400px) {
+        font-size: 60px;
+      }
+
+      @media(min-width: 600px) {
+        margin-top: 80px;
+        font-size: 120px;
+      }
     }
 
     mat-card-subtitle {
@@ -24,19 +31,40 @@
       font-weight: normal;
       font-size: 28px;
       line-height: 39px;
-      color: #93C2ED;
       text-align: right;
+      color: mat-color($primary, 200);
+
+      @media(max-width: 400px) {
+        font-size: 20px;
+      }
+
+      @media(min-width: 600px) {
+        font-size: 36px;
+      }
     }
   }
 
   mat-card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+
     p {
       font-family: 'Roboto', sans-serif;
       font-style: normal;
       font-weight: 300;
       font-size: 24px;
       line-height: 28px;
-      color: #716868;
+      padding: 0 5px;
+
+      @media(max-width: 400px) {
+        font-size: 18px;
+      }
+
+      @media(min-width: 600px) {
+        text-align: center;
+        font-size: 32px;
+      }
     }
 
     .bold {
@@ -44,7 +72,14 @@
     }
 
     mat-divider {
-      border: 1px solid #93C2ED;
+      margin: 20px 0;
+      width: 85%;
+      border: 1px solid mat-color($primary, 200);
+      align-self: center;
+
+      @media(min-width: 600px) {
+        margin: 80px 0;
+      }
     }
 
     .rotate {
@@ -55,18 +90,24 @@
   mat-card-actions {
     display: flex;
     justify-content: center;
-    margin: 50px 0;
+    margin-bottom: 40px;
 
     button {
+      background: mat-color($primary, 200);
+      color: mat-color($accent, 50);
       padding: 15px 40px;
       border: none;
-      background: #93C2ED;
       font-family: 'Roboto', sans-serif;
       font-style: normal;
       font-weight: normal;
       font-size: 36px;
       line-height: 42px;
-      color: #FFFFFF;
+      border-radius: 0;
+
+      @media(max-width: 400px) {
+        padding: 10px 20px;
+        font-size: 28px;
+      }
     }
   }
 }

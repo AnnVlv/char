@@ -10,6 +10,7 @@ export class ReminderComponent implements OnInit {
   private numbers: object;
   @Output() onHideReminder = new EventEmitter<any>();
   @Input() reminder: string;
+  @Input() remindersForSetting?: string[];
   @Input() option: string;
 
   public ngOnInit(): void {

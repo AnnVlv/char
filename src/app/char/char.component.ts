@@ -7,6 +7,8 @@ import {COMMENTS} from '../shared/comments';
 import {OPTIONS_NAMES} from '../shared/optionsNames';
 import {OPTIONS} from '../shared/options';
 import {SettingsService} from '../shared/settings.service';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-char',
@@ -28,9 +30,12 @@ export class CharComponent implements OnInit {
   public comments: object;
 
   public currentReminder: string;
-  public currentComment: string;
+  public currentComments: string[];
 
   public radioChangesCounts: object;
+
+  public faArrowLeft: any;
+  public faArrowRight: any;
 
   constructor(
     private charService: CharService,
@@ -56,11 +61,14 @@ export class CharComponent implements OnInit {
     this.comments = COMMENTS;
 
     this.currentReminder = this.reminders[this.currentOption];
-    this.currentComment = '';
+    this.currentComments = [];
 
     this.radioChangesCounts = {
       [this.options[this.currentOption][0]]: 1
     };
+
+    this.faArrowLeft = faArrowLeft;
+    this.faArrowRight = faArrowRight;
   }
 
   private onRadioValueChanges(event: MatRadioChange): void {
@@ -75,8 +83,8 @@ export class CharComponent implements OnInit {
         for (const key in this.currentOptions) {
           currentOptionsInString += this.currentOptions[key];
         }
-        this.currentComment = this.comments[this.currentOption][currentOptionsInString];
-        if (this.currentComment) {
+        this.currentComments = this.comments[this.currentOption][currentOptionsInString];
+        if (this.currentComments) {
           this.isReminder = false;
           this.isComment = true;
         }

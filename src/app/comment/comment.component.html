@@ -1,8 +1,10 @@
-<mat-card class="char">
+<mat-card class="char mat-elevation-z0">
   <mat-card-content>
-    <p>{{comment}}</p>
+    <p *ngFor="let comment of comments">{{comment}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="hideComment()">X</button>
+    <button mat-button (click)="hideComment()">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

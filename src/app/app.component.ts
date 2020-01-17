@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {SettingsService} from './shared/settings.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,6 @@ import {SettingsService} from './shared/settings.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private settingsService: SettingsService) {}
+
+  constructor() {}
 }

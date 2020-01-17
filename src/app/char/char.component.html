@@ -1,15 +1,15 @@
-<mat-card class="char" [class.unicorn-dark-theme]="currentTheme === 'dark'">
+<mat-card class="char mat-elevation-z0" [class.unicorn-dark-theme]="currentTheme === 'dark'">
   <app-reminder *ngIf="isReminder"
                 [reminder]="currentReminder"
                 [option]="currentOption"
                 (onHideReminder)="hideReminder()"></app-reminder>
   <app-comment *ngIf="isComment"
-                [comment]="currentComment"
+                [comments]="currentComments"
                 (onHideComment)="hideComment()"></app-comment>
   <mat-card-content class="image-wrapper">
     <img mat-card-image src="assets/images/{{currentOption}}/{{currentOptions[optionsNames[0]]}}{{currentOptions[optionsNames[1]]}}.png" alt="Your hero">
   </mat-card-content>
-  <mat-card-content>
+  <mat-card-content class="radio-wrapper">
     <label id="radio-group-label">Choose <span class="bold">{{currentOption}}</span> from the options:</label>
     <mat-radio-group
       aria-labelledby="radio-group-label"
@@ -21,7 +21,7 @@
     </mat-radio-group>
   </mat-card-content>
   <mat-card-actions>
-    <button [class.hidden]="charService.currentOption === optionsNames[0]" mat-button (click)="goToPrevOption()" class="backButton">Back</button>
-    <button mat-button (click)="goToNextOption()" class="nextButton">Next</button>
+    <button [class.hidden]="charService.currentOption === optionsNames[0]" mat-button (click)="goToPrevOption()" class="backButton"><fa-icon [icon]="faArrowLeft"></fa-icon> Back</button>
+    <button mat-button (click)="goToNextOption()" class="nextButton">Next <fa-icon [icon]="faArrowRight"></fa-icon></button>
   </mat-card-actions>
 </mat-card>

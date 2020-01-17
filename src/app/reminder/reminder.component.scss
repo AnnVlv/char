@@ -1,13 +1,30 @@
-.char {
+@import "../../theme";
+
+.reminder {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
   font-family: 'Roboto', sans-serif;
+  background: mat-color($background, 50);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
 
   mat-card-content {
+    padding: 20px;
+    padding-bottom: 0;
+
     p {
       font-style: normal;
       font-weight: 300;
       font-size: 24px;
-      line-height: 28px;
+      color: mat-color($accent, 700);
+      margin: 10px 0;
+    }
+
+    .option {
+      text-transform: capitalize;
     }
 
     .bold {
@@ -16,7 +33,10 @@
   }
 
   mat-card-actions {
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    padding-right: 20px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: flex-end;
 
@@ -24,10 +44,11 @@
       font-style: normal;
       font-weight: normal;
       font-size: 24px;
-      line-height: 28px;
       border: none;
-      padding: 5px 20px;
+      padding: 5px 15px;
+      background: mat-color($primary, 200);
+      color: mat-color($accent, 50);
+      border-radius: 0;
     }
   }
 }
-

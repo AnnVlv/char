@@ -1,8 +1,71 @@
-mat-card-content {
-  display: flex;
-  flex-direction: column;
+@import "../../theme";
 
-  mat-radio-group {
+.settings {
+  padding: 0;
+  margin: 0;
 
+  mat-card-content.image-wrapper {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+
+  mat-card-content {
+    margin: 0;
+    margin-top: -20px;
+    padding: 20px;
+    box-shadow: 0 -10px 10px 0 rgba(0, 0, 0, 0.25);
+
+    mat-radio-group {
+      .mat-radio-buttons-wrapper {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      mat-radio-button {
+        margin: 20px 0;
+        margin-right: 100px;
+      }
+    }
+
+    .color-picker-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      @media (max-width: 400px) {
+        flex-direction: column;
+        justify-content: start;
+      }
+    }
+  }
+
+  mat-card-actions {
+    padding: 0;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin: 0;
+
+    button {
+      margin: 0;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      border: none;
+      padding: 5px 20px;
+      border-radius: 0;
+      color: #ffffff;
+    }
+  }
+
+  label, mat-radio-button {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
   }
 }

@@ -1,7 +1,7 @@
-<mat-card class="char">
+<mat-card class="reminder mat-elevation-z0">
   <mat-card-content *ngIf="option !== 'settings'; else settings">
     <p>The {{numbers[option]}}:</p>
-    <p><span class="bold">{{option}}</span></p>
+    <p class="option"><span class="bold">{{option}}</span></p>
     <p>{{reminder}}</p>
   </mat-card-content>
   <mat-card-actions>
@@ -9,6 +9,10 @@
   </mat-card-actions>
 
   <ng-template #settings>
-    <p>{{reminder}}</p>
+    <mat-card-content>
+      <p>{{reminder}}</p>
+      <p>{{remindersForSetting[0]}}</p>
+      <p>{{remindersForSetting[1]}} <span class="bold">{{option}}</span></p>
+    </mat-card-content>
   </ng-template>
 </mat-card>

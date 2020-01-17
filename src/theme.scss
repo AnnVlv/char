@@ -2,19 +2,21 @@
 
 @include mat-core();
 
-$primary: mat-palette($mat-light-blue);
-$accent: mat-palette($mat-blue, A200, A100, A400);
-$warn: mat-palette($mat-red);
+$primary: mat-palette($mat-blue, 300);
+$accent: mat-palette($mat-grey);
+$warn: mat-palette($mat-lime);
+$background: mat-palette($mat-brown);
 $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 
-.dark-theme {
+.dark {
   color: $light-primary-text;
-  $dark-primary: mat-palette($mat-yellow);
-  $dark-accent: mat-palette($mat-amber, A400, A100, A700);
-  $dark-warn: mat-palette($mat-red);
-  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  $primary: mat-palette($mat-blue-gray);
+  $accent: mat-palette($mat-yellow, 50);
+  $warn: mat-palette($mat-red);
+  $background: mat-palette($mat-red);
+  $theme: mat-dark-theme($primary, $accent, $warn);
 
-  @include angular-material-theme($dark-theme);
+  @include angular-material-theme($theme);
 }

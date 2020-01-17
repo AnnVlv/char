@@ -6,6 +6,7 @@ import {OPTIONS_NAMES} from '../shared/optionsNames';
 import {MatRadioChange} from '@angular/material';
 import {SettingsService} from '../shared/settings.service';
 import {Router} from '@angular/router';
+import {faCog} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-settings',
@@ -13,6 +14,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  public isDarkTheme: boolean;
   public currentColor: string;
 
   public optionsNames: string[];
@@ -22,7 +24,10 @@ export class SettingsComponent implements OnInit {
 
   public reminders: Reminders;
   public currentReminder: string;
+  public remindersForSetting: string[];
   public isReminder: boolean;
+
+  public faCog: any;
 
   constructor(
     private settingsService: SettingsService,
@@ -31,6 +36,7 @@ export class SettingsComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    this.isDarkTheme = false;
     this.currentColor = 'fff';
 
     if (!this.charService.currentOption) {
@@ -44,7 +50,11 @@ export class SettingsComponent implements OnInit {
 
     this.reminders = new Reminders();
     this.currentReminder = this.reminders.settings[0] + this.getHeroType() + this.reminders.settings[1];
+    this.remindersForSetting = [this.reminders.settings[2], this.reminders.settings[3]];
+
     this.isReminder = true;
+
+    this.faCog = faCog;
   }
 
   private getHeroType(): string {
@@ -76,11 +86,16 @@ export class SettingsComponent implements OnInit {
 
   private changeTheme(event: MatRadioChange): void {
     this.isReminder = false;
-    this.settingsService.currentTheme = event.value;
+    let color = '#fff';
+    if (event.value === 'dark') {
+      color = '#474141';
+    }
+    this.currentColor = this.settingsService.currentBackgroundColor = color;
+    this.isDarkTheme = !this.isDarkTheme;
   }
 
   private changeBackgroundColor(event): void {
-    this.settingsService.currentBackgroundColor = event;
+    this.currentColor = this.settingsService.currentBackgroundColor = event;
   }
 
   private saveSettings(): void {

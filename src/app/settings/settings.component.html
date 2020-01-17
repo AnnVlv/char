@@ -23,11 +23,13 @@
       </div>
     </mat-radio-group>
     <div class="color-picker-wrapper">
-      <label id="color-picker-label">Background:</label><br>
-      <input [(colorPicker)]="currentColor"
+      <label id="color-picker-label" class="color-picker-label">Background:</label><br>
+      <input style="visibility: hidden" [(colorPicker)]="currentColor"
              [style.background]="currentColor"
              (colorPickerChange)="changeBackgroundColor($event)"
-             cpPosition="bottom"
+             [cpToggle]="true"
+             [cpDisableInput]="true"
+             cpDialogDisplay="inline"
              class="background-input"/>
     </div>
   </mat-card-content>

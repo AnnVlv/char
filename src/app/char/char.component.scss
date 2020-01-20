@@ -58,9 +58,11 @@
   mat-card-content.image-wrapper {
     display: flex;
     justify-content: center;
+    overflow: hidden;
 
     img {
       max-width: 500px;
+      margin-right: -60px;
     }
   }
 
